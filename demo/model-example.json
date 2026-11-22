@@ -1,0 +1,15 @@
+{
+  "model": "gemma-4-e4b-it",
+  "text": "Row 2 · For shot 2, what is the specific extent of the Presenter and Package being outside the safe area?",
+  "row": 2,
+  "record": {
+    "Shot": "Presenter and packaging",
+    "Left (px)": 594,
+    "Top (px)": 0,
+    "Width (px)": 603,
+    "Height (px)": 1072,
+    "Outside safe area": "Presenter, Package"
+  },
+  "source_sha256": "6bd29485372c40ef9f1973d1d3734781c9349c1b517e62099654a930f29a2531",
+  "report_sha256": "03d9b9ee2b960c86f50739a42fda1d758520394f99460b9118496a904e91a93a"
+}
