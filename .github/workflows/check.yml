@@ -29,7 +29,7 @@ jobs:
           set -euo pipefail
           docker run --detach --name workbench-check --env PORT=8181 --publish 127.0.0.1:8181:8181 example-workbench:ci
           trap 'docker logs workbench-check; docker rm -f workbench-check >/dev/null' EXIT
-          curl --fail --silent --show-error --retry 20 --retry-connrefused --retry-delay 1 http://127.0.0.1:8181/health
+          curl --fail --silent --show-error --max-time 3 --retry 20 --retry-all-errors --retry-delay 1 http://127.0.0.1:8181/health
           python - <<'PY'
           import json, os, pathlib, urllib.request
           base = "http://127.0.0.1:8181"
