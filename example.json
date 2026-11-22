@@ -1,0 +1,57 @@
+{
+  "source_width": 1920,
+  "source_height": 1080,
+  "safe_margin": 0.05,
+  "shots": [
+    {
+      "name": "Grinder close-up",
+      "subjects": [
+        {
+          "name": "Dial",
+          "x": 780,
+          "y": 335,
+          "width": 248,
+          "height": 218
+        }
+      ]
+    },
+    {
+      "name": "Presenter and packaging",
+      "subjects": [
+        {
+          "name": "Presenter",
+          "x": 160,
+          "y": 160,
+          "width": 360,
+          "height": 610
+        },
+        {
+          "name": "Package",
+          "x": 1340,
+          "y": 480,
+          "width": 290,
+          "height": 280
+        }
+      ]
+    },
+    {
+      "name": "Final pour",
+      "subjects": [
+        {
+          "name": "Spout",
+          "x": 1220,
+          "y": 255,
+          "width": 160,
+          "height": 235
+        },
+        {
+          "name": "Cup",
+          "x": 1318,
+          "y": 600,
+          "width": 199,
+          "height": 251
+        }
+      ]
+    }
+  ]
+}

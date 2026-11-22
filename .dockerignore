@@ -1,0 +1,12 @@
+**
+!Dockerfile
+!requirements.txt
+!app.py
+!providers.py
+!project.py
+!example.json
+!web/
+!web/index.html
+!web/style.css
+!web/ui.js
+!web/diagram.js

@@ -1,0 +1,53 @@
+name: Check application
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run unit tests and analyze the sample
+        run: |
+          python -m unittest discover -p 'test_*.py' -v
+          python app.py analyze example.json > "$RUNNER_TEMP/example-report.json"
+      - name: Build container
+        run: docker build --tag example-workbench:ci .
+      - name: Exercise the built service
+        shell: bash
+        run: |
+          set -euo pipefail
+          docker run --detach --name workbench-check --env PORT=8181 --publish 127.0.0.1:8181:8181 example-workbench:ci
+          trap 'docker logs workbench-check; docker rm -f workbench-check >/dev/null' EXIT
+          curl --fail --silent --show-error --retry 20 --retry-connrefused --retry-delay 1 http://127.0.0.1:8181/health
+          python - <<'PY'
+          import json, os, pathlib, urllib.request
+          base = "http://127.0.0.1:8181"
+          def fetch(path, body=None):
+              request = urllib.request.Request(
+                  base + path,
+                  data=None if body is None else json.dumps(body).encode(),
+                  headers={"Content-Type": "application/json"},
+              )
+              with urllib.request.urlopen(request, timeout=10) as response:
+                  return json.load(response)
+          assert fetch("/health") == {"status": "ok"}
+          sample = fetch("/api/example")
+          expected = json.loads((pathlib.Path(os.environ["RUNNER_TEMP"]) / "example-report.json").read_text())
+          assert sample["report"] == expected
+          assert fetch("/api/analyze", {"input": sample["input"]}) == expected
+          for route in ("/", "/style.css", "/ui.js", "/diagram.js"):
+              with urllib.request.urlopen(base + route, timeout=10) as response:
+                  assert response.status == 200 and response.read()
+          PY
+          test "$(docker exec workbench-check id -u)" != 0

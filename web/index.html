@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Vertical Frame Planner</title><link rel="stylesheet" href="/style.css"><script src="/diagram.js" defer></script><script src="/ui.js" defer></script></head><body style="--accent:#9a432c">
+<header><div class="brand"><i aria-hidden="true"></i>Vertical Frame Planner</div><span id="provider"></span></header>
+<main><h1>Vertical Frame Planner</h1><p class="lede">Plan exact 9:16 crops for landscape footage and flag subjects outside the safe area.</p>
+<nav aria-label="Workspace"><button id="reportTab" aria-pressed="true">Report</button><button id="inputTab" aria-pressed="false">Input JSON</button><span></span><button id="download">Export report</button></nav>
+<section id="editor" hidden><label for="source">Project input</label><textarea id="source" spellcheck="false"></textarea><div class="actions"><label class="file">Open JSON file<input type="file" id="file" accept=".json,application/json"></label><button id="run" class="primary">Run analysis</button></div></section>
+<p id="error" role="alert" hidden></p>
+<section id="result"><div id="metrics"></div><div id="diagram" hidden></div><section class="panel"><h2>Findings</h2><p id="summary"></p><div class="scroll"><table><thead></thead><tbody></tbody></table></div></section>
+<details id="model"><summary>Model review</summary><p id="modelHint">Optional interpretation of the computed evidence.</p><label id="tokenLabel" hidden>Workspace access token<input id="access" type="password" autocomplete="off"></label><button id="review" class="primary">Request review</button><p id="comment" aria-live="polite"></p></details></section>
+</main></body></html>

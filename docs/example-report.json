@@ -1,0 +1,34 @@
+{
+  "summary": "2 of 3 shots keep every annotated subject inside the safe area.",
+  "metrics": {
+    "Shots": 3,
+    "Need reframing": 1,
+    "Crop size": "603 × 1072"
+  },
+  "rows": [
+    {
+      "Shot": "Grinder close-up",
+      "Left (px)": 602,
+      "Top (px)": 0,
+      "Width (px)": 603,
+      "Height (px)": 1072,
+      "Outside safe area": "None"
+    },
+    {
+      "Shot": "Presenter and packaging",
+      "Left (px)": 594,
+      "Top (px)": 0,
+      "Width (px)": 603,
+      "Height (px)": 1072,
+      "Outside safe area": "Presenter, Package"
+    },
+    {
+      "Shot": "Final pour",
+      "Left (px)": 1067,
+      "Top (px)": 8,
+      "Width (px)": 603,
+      "Height (px)": 1072,
+      "Outside safe area": "None"
+    }
+  ]
+}
